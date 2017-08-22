@@ -2,6 +2,7 @@ const labels = ["K/D Ratio", "Win %", "Time Survived", "Rounds Played", "Wins", 
 const suggestedLabels = ["K/D Ratio", "Win %", "Time Survived", "Rounds Played", "Wins", "Win Top 10 Ratio", "Top 10s", "Top 10 Rate", "Losses", "Rating", "Best Rating", "Best Rank", "Time Survived Pg", "Kills", "Round Most Kills", "Longest Time Survived", "Avg Survival Time", "Walk Distance", "Ride Distance", "Avg Walk Distance", "Avg Ride Distance", "Longest Kill", "Heals", "Revives", "Boosts", "Knock Outs"];
 
 function getStats(pubgName) {
+    $("#stats").hide();
     $("#loader").show();
     $('#error').hide();
     $.ajax({
@@ -23,9 +24,14 @@ function getStats(pubgName) {
 
 
 function loadStats(info) {
-    for (var k = 0; k < 3; k++) {
+    info = info.Stats;
+    info = $.grep(info, function(s) {
+        return s.Region == "eu" && s.Season == "2017-pre3";
+    });
+
+    for (var k = 0; k < info.length; k++) {
         var text = "";
-        var stats = info.Stats[k].Stats;
+        var stats = info[k].Stats;
         var textAux = "<tr>";
         var cont = 0;
 
@@ -66,6 +72,7 @@ function loadStats(info) {
 
 
 function getMultipleStats(pubgName1, pubgName2) {
+    $("#stats").hide();
     $("#loader").show();
     $('#error').hide();
     var statsFP = "";
@@ -109,11 +116,18 @@ function getMultipleStats(pubgName1, pubgName2) {
 function compareStats(infoFP, infoSP) {
     var nameFP = infoFP.PlayerName;
     var nameSP = infoSP.PlayerName;
-
-    for (var k = 0; k < 3; k++) {
+    infoFP = infoFP.Stats;
+    infoFP = $.grep(infoFP, function(s) {
+        return s.Region == "eu" && s.Season == "2017-pre3";
+    });
+    infoSP = infoSP.Stats;
+    infoSP = $.grep(infoSP, function(s) {
+        return s.Region == "eu" && s.Season == "2017-pre3";
+    });
+    for (var k = 0; k < infoFP.length; k++) {
         var text = "";
-        var statsFP = infoFP.Stats[k].Stats;
-        var statsSP = infoSP.Stats[k].Stats;
+        var statsFP = infoFP[k].Stats;
+        var statsSP = infoSP[k].Stats;
         var textAux = "<tr>";
         var cont = 0;
 

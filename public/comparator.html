@@ -15,11 +15,11 @@
     <div class="navbar-fixed">
         <nav class="light-blue darken-2">
             <div class="nav-wrapper">
-                <a href="/" class="brand-logo">PUBG Stats</a>
+                <a href="/" class="brand-logo">PUBG Stats<span id="beta">[beta]</span></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="/">Single Stats</a></li>
                     <li class="active"><a href="#!">Comparator</a></li>
-                    <li><a hred="https://github.com/Davidcorral94/PUBG-Stats">GitHub</a></li>
+                    <li><a href="https://github.com/Davidcorral94/PUBG-Stats">GitHub</a></li>
                 </ul>
             </div>
         </nav>
@@ -67,6 +67,7 @@
             </div>
         </div>
         <div id="stats" style="display: none">
+            <h5>Region EU - Season 3</h5>
             <ul class="collapsible popout" data-collapsible="accordion">
                 <li>
                     <div class="collapsible-header"><i class="material-icons">looks_one</i><b class="blue-text text-light-blue darken-2">SOLO</b></div>
@@ -110,7 +111,7 @@
                     empty = true;
                 }
             });
-            
+
             $('div > input').each(function() {
                 if ($(this).val() == '') {
                     empty = true;

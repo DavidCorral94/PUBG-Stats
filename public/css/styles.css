@@ -21,7 +21,6 @@
 }
 */
 
-
 /* label focus color */
 
 .input-field input:focus+label {
@@ -69,14 +68,18 @@
     color: #0288d1;
 }
 
-div > i{
+div>i {
     color: #0288d1;
 }
 
-#statsSelected > p {
+#statsSelected>p {
     display: inline;
 }
 
 section {
     padding: 10px;
+}
+
+#beta{
+    font-size: 11px;
 }
