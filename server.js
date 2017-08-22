@@ -19,7 +19,7 @@ const api = new PubgAPI({
 
 
 
-app.get("/stats/:pubgname", (request, response) => {
+app.get("/stats/:pubgname", (request, response, error) => {
   var name = request.params.pubgname;
   console.log("GET /stats/" + name);
   api.getProfileByNickname(name)

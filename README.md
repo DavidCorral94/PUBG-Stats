@@ -10,3 +10,8 @@ The app works thanks to two essential elements:
 - [pubg-api-redis](https://github.com/javilobo8/pubg-api-redis) Playerunknown's Battlegrounds API Wrapper with Redis caching.
 
 
+## TO-DO
+
+- Handle exceptions in the backend
+- Stats selection
+- ...

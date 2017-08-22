@@ -1,17 +1,22 @@
 const labels = ["K/D Ratio", "Win %", "Time Survived", "Rounds Played", "Wins", "Win Top 10 Ratio", "Top 10s", "Top 10 Rate", "Losses", "Rating", "Best Rating", "Best Rank", "Avg Dmg per Match", "Headshot Kills Pg", "Heals Pg", "Kills Pg", "Move Distance Pg", "Revives Pg", "Road Kills Pg", "Team Kills Pg", "Time Survived Pg", "Top 10s Pg", "Kills", "Assists", "Suicides", "Team Kills", "Headshot Kills", "Headshot Kill Ratio", "Vehicle Destroys", "Road Kills", "Daily Kills", "Weekly Kills", "Round Most Kills", "Max Kill Streaks", "Weapons Acquired", "Days", "Longest Time Survived", "Most Survival Time", "Avg Survival Time", "Win Points", "Walk Distance", "Ride Distance", "Move Distance", "Avg Walk Distance", "Avg Ride Distance", "Longest Kill", "Heals", "Revives", "Boosts", "Damage Dealt", "Knock Outs"];
+const suggestedLabels = ["K/D Ratio", "Win %", "Time Survived", "Rounds Played", "Wins", "Win Top 10 Ratio", "Top 10s", "Top 10 Rate", "Losses", "Rating", "Best Rating", "Best Rank", "Time Survived Pg", "Kills", "Round Most Kills", "Longest Time Survived", "Avg Survival Time",  "Walk Distance", "Ride Distance", "Avg Walk Distance", "Avg Ride Distance", "Longest Kill", "Heals", "Revives", "Boosts", "Knock Outs"];
 
 function getStats(pubgName) {
     $("#loader").show();
+    $('#error').hide();
     $.ajax({
         url: '/stats/' + pubgName,
         type: 'GET',
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
+        timeout: 5000,
         success: function(result) {
             loadStats(result)
         },
         error: function(error) {
             console.log(error)
+            $("#loader").hide();
+            $('#error').show();
         }
     });
 }
@@ -24,13 +29,13 @@ function loadStats(info) {
         var cont = 0;
 
         for (var i in stats) {
-            if (labels.includes(stats[i].label)) {
-                if (cont < 3) {
-                    textAux += "<td><b>" + stats[i].label + "</b> |  " + stats[i].displayValue + "</td>";
+            if (suggestedLabels.includes(stats[i].label)) {
+                if (cont < 2) {
+                    textAux += "<td><b>" + stats[i].label + "</b> <br>  " + stats[i].displayValue + "</td>";
                     cont++
                 }
                 else {
-                    textAux += "</tr>"
+                    textAux += "<td><b>" + stats[i].label + "</b> <br>  " + stats[i].displayValue + "</td></tr>"
                     text += textAux;
                     textAux = "<tr>"
                     cont = 0

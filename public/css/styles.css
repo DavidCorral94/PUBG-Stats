@@ -72,3 +72,7 @@
 div > i{
     color: #0288d1;
 }
+
+#statsSelected > p {
+    display: inline;
+}

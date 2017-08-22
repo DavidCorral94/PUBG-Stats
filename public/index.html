@@ -5,6 +5,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
     <link type="text/css" rel="stylesheet" href="css/styles.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
@@ -28,6 +30,11 @@
                     <div class="col s3"></div>
                 </div>
             </form>
+        </div>
+        <div id="error" class="card red lighten-5" style="display: none">
+            <div class="card-content red-text">
+                <p>Ups! It looks like something fail. Please check if the name is right or try again later!</p>
+            </div>
         </div>
         <div class="center" id="loader" style="display: none">
             <div class="preloader-wrapper big active">
@@ -76,11 +83,6 @@
             </ul>
         </div>
     </section>
-
-
-
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="js/materialize.min.js"></script>
     <script>
         $(document).ready(function() {
             $('.collapsible').collapsible();
