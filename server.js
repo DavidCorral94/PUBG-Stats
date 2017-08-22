@@ -14,12 +14,7 @@ app.use(cors());
 
 // If no Redis configuration it wont be cached
 const api = new PubgAPI({
-  apikey: process.env.APIKEY,
-  redisConfig: {
-    host: '127.0.0.1',
-    port: 6379,
-    expiration: 300, // Optional - defaults to 300.
-  },
+  apikey: process.env.APIKEY
 });
 
 
