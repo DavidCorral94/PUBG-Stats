@@ -76,3 +76,7 @@ div > i{
 #statsSelected > p {
     display: inline;
 }
+
+section {
+    padding: 10px;
+}

@@ -15,10 +15,10 @@
     <div class="navbar-fixed">
         <nav class="light-blue darken-2">
             <div class="nav-wrapper">
-                <a href="#!" class="brand-logo">PUBG Stats</a>
+                <a href="/" class="brand-logo">PUBG Stats</a>
                 <ul class="right hide-on-med-and-down">
-                    <li class="active"><a href="#!">Single Stats</a></li>
-                    <li><a href="/comparator.html">Comparator</a></li>
+                    <li><a href="/">Single Stats</a></li>
+                    <li class="active"><a href="#!">Comparator</a></li>
                     <li><a hred="https://github.com/Davidcorral94/PUBG-Stats">GitHub</a></li>
                 </ul>
             </div>
@@ -26,25 +26,29 @@
     </div>
     <section class='container'>
         <div class="row">
-            <div class="col s12">
+            <form class="col s12" action="javascript:void(0);">
                 <div class="row">
-                    <div class="col s3"></div>
-                    <div class="input-field col s4">
-                        <input id="pubg-name" type="text" class="validate">
-                        <label for="pubg-name">PUBG Name</label>
+                    <div class="col s2"></div>
+                    <div class="input-field col s3">
+                        <input id="pubg-name-1" type="text" class="validate">
+                        <label for="pubg-name-1">PUBG Name #1</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input id="pubg-name-2" type="text" class="validate">
+                        <label for="pubg-name-2">PUBG Name #2</label>
                     </div>
                     <div class="input-field col s2 center">
-                        <button id="single-search" class="btn waves-effect waves-light light-blue darken-2" type="submit" onclick="getStats($('#pubg-name').val())" disabled="disabled">Go!
+                        <button id="single-search" class="btn waves-effect waves-light light-blue darken-2" type="submit" onclick="getMultipleStats($('#pubg-name-1').val(),$('#pubg-name-2').val())" disabled="disabled">Go!
                             <i class="material-icons right">send</i>
                         </button>
                     </div>
-                    <div class="col s3"></div>
+                    <div class="col s2"></div>
                 </div>
-            </div>
+            </form>
         </div>
         <div id="error" class="card red lighten-5" style="display: none">
             <div class="card-content red-text">
-                <p>Ups! It looks like something fail. Please check if the name is right or try again later!</p>
+                <p>Ups! It looks like something fail. Please check if the names are right or try again later!</p>
             </div>
         </div>
         <div class="center" id="loader" style="display: none">
@@ -99,9 +103,15 @@
             $('.collapsible').collapsible();
         });
 
-        $('#pubg-name').keyup(function() {
+        $('div > input').keyup(function() {
             var empty = false;
-            $('#pubg-name').each(function() {
+            $('div > input').each(function() {
+                if ($(this).val() == '') {
+                    empty = true;
+                }
+            });
+            
+            $('div > input').each(function() {
                 if ($(this).val() == '') {
                     empty = true;
                 }

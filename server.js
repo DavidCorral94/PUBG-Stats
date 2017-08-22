@@ -10,6 +10,7 @@ var server = http.createServer(app);
 const { PubgAPI, PubgAPIErrors, REGION, SEASON, MATCH } = require('pubg-api-redis');
 
 app.use(express.static(path.resolve(__dirname, 'public')));
+app.use('/comparator', express.static(path.join(__dirname + '/public/comparator.html')));
 app.use(cors());
 
 // If no Redis configuration it wont be cached
