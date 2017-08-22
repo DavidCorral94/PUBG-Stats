@@ -1,6 +1,7 @@
 const labels = ["K/D Ratio", "Win %", "Time Survived", "Rounds Played", "Wins", "Win Top 10 Ratio", "Top 10s", "Top 10 Rate", "Losses", "Rating", "Best Rating", "Best Rank", "Avg Dmg per Match", "Headshot Kills Pg", "Heals Pg", "Kills Pg", "Move Distance Pg", "Revives Pg", "Road Kills Pg", "Team Kills Pg", "Time Survived Pg", "Top 10s Pg", "Kills", "Assists", "Suicides", "Team Kills", "Headshot Kills", "Headshot Kill Ratio", "Vehicle Destroys", "Road Kills", "Daily Kills", "Weekly Kills", "Round Most Kills", "Max Kill Streaks", "Weapons Acquired", "Days", "Longest Time Survived", "Most Survival Time", "Avg Survival Time", "Win Points", "Walk Distance", "Ride Distance", "Move Distance", "Avg Walk Distance", "Avg Ride Distance", "Longest Kill", "Heals", "Revives", "Boosts", "Damage Dealt", "Knock Outs"];
 
 function getStats(pubgName) {
+    $("#loader").show();
     $.ajax({
         url: '/stats/' + pubgName,
         type: 'GET',
@@ -16,7 +17,6 @@ function getStats(pubgName) {
 }
 
 function loadStats(info) {
-
     for (var k = 0; k < 3; k++) {
         var text = "";
         var stats = info.Stats[k].Stats;
@@ -52,4 +52,8 @@ function loadStats(info) {
                 break;
         }
     }
+
+    $("#loader").hide();
+    $("#stats").show();
+
 }

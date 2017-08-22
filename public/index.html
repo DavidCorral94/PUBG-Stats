@@ -29,7 +29,22 @@
                 </div>
             </form>
         </div>
-        <div>
+        <div class="center" id="loader" style="display: none">
+            <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-blue-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="gap-patch">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="stats" style="display: none">
             <ul class="collapsible popout" data-collapsible="accordion">
                 <li>
                     <div class="collapsible-header"><i class="material-icons">looks_one</i><b class="blue-text text-light-blue darken-2">SOLO</b></div>
@@ -42,11 +57,21 @@
                 </li>
                 <li>
                     <div class="collapsible-header"><i class="material-icons">looks_two</i><b class="blue-text text-light-blue darken-2">DUO</b></div>
-                    <div class="collapsible-body"><span id="duo-fp"></span></div>
+                    <div class="collapsible-body">
+                        <table class="bordered">
+                            <tbody id="duo-fp">
+                            </tbody>
+                        </table>
+                    </div>
                 </li>
                 <li>
                     <div class="collapsible-header"><i class="material-icons">looks_4</i><b class="blue-text text-light-blue darken-2">SQUAD</b></div>
-                    <div class="collapsible-body"><span id="squad-fp"></span></div>
+                    <div class="collapsible-body">
+                        <table class="bordered">
+                            <tbody id="squad-fp">
+                            </tbody>
+                        </table>
+                    </div>
                 </li>
             </ul>
         </div>
