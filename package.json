@@ -1,0 +1,17 @@
+{
+  "name": "pubg-stats",
+  "version": "0.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "David Corral",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "~3.2.4",
+    "nodemon": "^1.11.0",
+    "pubg-api-redis": "^3.3.0",
+    "redis": "^2.8.0",
+    "request": "^2.81.0"
+  }
+}
