@@ -14,4 +14,4 @@ The app works thanks to two essential elements:
 
 - Handle exceptions in the backend
 - Stats selection
-- ...
+- Season and region selection (right now only support for EU - Season 3)
