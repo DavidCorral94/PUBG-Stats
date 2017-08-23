@@ -1,6 +1,7 @@
 # PUBG-Stats
 
 A web tool that makes you able to see your own stats on PUBG and compare it with others!
+
 You can have a look in [https://pubg-stats.herokuapp.com/](https://pubg-stats.herokuapp.com/)
 
 ## Technologies
