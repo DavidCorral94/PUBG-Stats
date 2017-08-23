@@ -21,6 +21,10 @@
 }
 */
 
+ul.dropdown-content.select-dropdown li span {
+    color: #0288d1; /* no need for !important :) */
+}
+
 /* label focus color */
 
 .input-field input:focus+label {

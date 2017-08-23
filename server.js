@@ -13,11 +13,9 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 app.use('/comparator', express.static(path.join(__dirname + '/public/comparator.html')));
 app.use(cors());
 
-// If no Redis configuration it wont be cached
 const api = new PubgAPI({
   apikey: process.env.APIKEY
 });
-
 
 
 app.get("/stats/:pubgname", (request, response, error) => {
@@ -34,6 +32,12 @@ app.get("/stats/:pubgname", (request, response, error) => {
       });
       */
       response.send(data);
+    })
+    .catch((err) => {
+      console.log("Error for " + name + ": " + err);
+      response.status(404).send({
+        msg: err
+      });
     });
 });
 
