@@ -36,16 +36,14 @@ function loadStats(info, region, season) {
         var textAux = "<tr>";
         var cont = 0;
         if (stats[2].displayValue == "0m") {
-            $("#" + matchs[k]).html("<b class=\"red-text\">" + name + " has no played on " + matchs[k] + " | Region " + region.toUpperCase()  + " | Season " + season + ". We are showing default stats.</b>");
+            $("#" + matchs[k]).html("<b class=\"red-text\">" + name + " has no played on " + matchs[k] + " | Region " + region.toUpperCase() + " | Season " + season + ". We are showing default stats.</b>");
         }
         for (var i in stats) {
             if (suggestedLabels.includes(stats[i].label)) {
-                if (cont < 2) {
-                    textAux += "<td><b>" + stats[i].label + "</b> <br>  " + stats[i].displayValue + "</td>";
-                    cont++
-                }
-                else {
-                    textAux += "<td><b>" + stats[i].label + "</b> <br>  " + stats[i].displayValue + "</td></tr>"
+                textAux += "<td><b>" + stats[i].label + "</b> <br>  " + stats[i].displayValue + "</td>";
+                cont++
+                if (cont > 2) {
+                    textAux += "</tr>"
                     text += textAux;
                     textAux = "<tr>"
                     cont = 0
@@ -99,14 +97,13 @@ function getMultipleStats(pubgName1, pubgName2) {
         contentType: 'application/json; charset=utf-8',
         success: function(result) {
             statsFP = result;
-            var millisecondsToWait = 1000;
+            var millisecondsToWait = 1000; //Cooldown between API calls
             setTimeout(function() {
                 $.ajax({
                     url: '/stats/' + pubgName2,
                     type: 'GET',
                     dataType: 'json',
                     contentType: 'application/json; charset=utf-8',
-                    timeout: 5000,
                     success: function(result) {
                         statsSP = result;
                         compareStats(statsFP, statsSP, $("#region").val(), $("#season").val());
@@ -142,7 +139,7 @@ function compareStats(infoFP, infoSP, region, season) {
         var textAux = "<tr>";
         var cont = 0;
         if (statsFP[2].displayValue == "0m") {
-            $("#" + matchs[k]).append("<p><b class=\"red-text\">" + nameFP + " has no played on " + matchs[k] + " | Region " + region.toUpperCase()  + " | Season " + season + ". We are showing default stats for him.</b></p>");
+            $("#" + matchs[k]).append("<p><b class=\"red-text\">" + nameFP + " has no played on " + matchs[k] + " | Region " + region.toUpperCase() + " | Season " + season + ". We are showing default stats for him.</b></p>");
         }
         if (statsSP[2].displayValue == "0m") {
             $("#" + matchs[k]).append("<p><b class=\"red-text\">" + nameSP + " has no played on " + matchs[k] + " | Region " + region.toUpperCase() + " | Season " + season + ". We are showing default stats for him.</b></p>");

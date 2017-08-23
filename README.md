@@ -13,5 +13,4 @@ The app works thanks to two essential elements:
 ## TO-DO
 
 - Stats selection
-- Stats calification (positive/negative)
 - Total stats section
