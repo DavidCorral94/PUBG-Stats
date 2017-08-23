@@ -26,6 +26,9 @@ function getStats(pubgName) {
 
 function loadStats(info, region, season) {
     var name = info.PlayerName;
+    $('#solo').empty();
+    $('#duo').empty();
+    $('#squad').empty();
     for (var k = 0; k < matchs.length; k++) {
         var stats = getInfo(info.Stats, region, season, matchs[k]);
         stats = stats[0].Stats;
@@ -33,7 +36,7 @@ function loadStats(info, region, season) {
         var textAux = "<tr>";
         var cont = 0;
         if (stats[2].displayValue == "0m") {
-            $("#" + matchs[k]).html("<b class=\"red-text\">" + name + " has no played on " + matchs[k] + " | Region " + region + " | Season " + season + ". So we are showing default stats.</b>");
+            $("#" + matchs[k]).html("<b class=\"red-text\">" + name + " has no played on " + matchs[k] + " | Region " + region.toUpperCase()  + " | Season " + season + ". We are showing default stats.</b>");
         }
         for (var i in stats) {
             if (suggestedLabels.includes(stats[i].label)) {
@@ -106,7 +109,7 @@ function getMultipleStats(pubgName1, pubgName2) {
                     timeout: 5000,
                     success: function(result) {
                         statsSP = result;
-                        compareStats(statsFP, statsSP);
+                        compareStats(statsFP, statsSP, $("#region").val(), $("#season").val());
                     },
                     error: function(error) {
                         console.log(error)
@@ -124,18 +127,26 @@ function getMultipleStats(pubgName1, pubgName2) {
     });
 }
 
-function compareStats(infoFP, infoSP) {
+function compareStats(infoFP, infoSP, region, season) {
     var nameFP = infoFP.PlayerName;
     var nameSP = infoSP.PlayerName;
+    $('#solo').empty();
+    $('#duo').empty();
+    $('#squad').empty();
     for (var k = 0; k < matchs.length; k++) {
-        var statsFP = getInfo(infoFP.Stats, "eu", "2017-pre3", matchs[k]);
+        var statsFP = getInfo(infoFP.Stats, region, season, matchs[k]);
         statsFP = statsFP[0].Stats;
-        var statsSP = getInfo(infoSP.Stats, "eu", "2017-pre3", matchs[k]);
+        var statsSP = getInfo(infoSP.Stats, region, season, matchs[k]);
         statsSP = statsSP[0].Stats;
         var text = "";
         var textAux = "<tr>";
         var cont = 0;
-
+        if (statsFP[2].displayValue == "0m") {
+            $("#" + matchs[k]).append("<p><b class=\"red-text\">" + nameFP + " has no played on " + matchs[k] + " | Region " + region.toUpperCase()  + " | Season " + season + ". We are showing default stats for him.</b></p>");
+        }
+        if (statsSP[2].displayValue == "0m") {
+            $("#" + matchs[k]).append("<p><b class=\"red-text\">" + nameSP + " has no played on " + matchs[k] + " | Region " + region.toUpperCase() + " | Season " + season + ". We are showing default stats for him.</b></p>");
+        }
         for (var i in statsFP) {
             if (suggestedLabels.includes(statsFP[i].label)) {
                 if (statsFP[i].ValueDec > statsSP[i].ValueDec || statsFP[i].ValueInt > statsSP[i].ValueInt) {

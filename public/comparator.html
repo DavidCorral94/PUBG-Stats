@@ -15,7 +15,7 @@
     <div class="navbar-fixed">
         <nav class="light-blue darken-2">
             <div class="nav-wrapper container">
-                <a href="/" class="brand-logo">PUBG Stats<span id="beta">[beta]</span></a>
+                <a href="#!" class="brand-logo" style="font-size: 24px;">PUBG Stats</a>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="/">Single Stats</a></li>
@@ -34,21 +34,42 @@
         <div class="row">
             <form class="col s12" action="javascript:void(0);">
                 <div class="row">
-                    <div class="col s2"></div>
-                    <div class="input-field col s3">
-                        <input id="pubg-name-1" type="text" class="validate">
-                        <label for="pubg-name-1">PUBG Name #1</label>
+                    <div class="input-field col s8">
+                        <div class="input-field col s6">
+                            <input id="pubg-name-1" type="text" class="validate">
+                            <label for="pubg-name-1">PUBG Name #1</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="pubg-name-2" type="text" class="validate">
+                            <label for="pubg-name-2">PUBG Name #2</label>
+                        </div>
                     </div>
-                    <div class="input-field col s3">
-                        <input id="pubg-name-2" type="text" class="validate">
-                        <label for="pubg-name-2">PUBG Name #2</label>
-                    </div>
-                    <div class="input-field col s2 center">
-                        <button id="single-search" class="btn waves-effect waves-light light-blue darken-2" type="submit" onclick="getMultipleStats($('#pubg-name-1').val(),$('#pubg-name-2').val())" disabled="disabled">Go!
-                            <i class="material-icons right">send</i>
+                    <div class="input-field col s4">
+                        <div class="input-field col s12">
+                            <button id="single-search" class="btn waves-effect waves-light light-blue darken-2" type="submit" onclick="getMultipleStats($('#pubg-name-1').val(),$('#pubg-name-2').val())" disabled="disabled">Go!
                         </button>
+                        </div>
                     </div>
-                    <div class="col s2"></div>
+                </div>
+                <div class="row">
+                    <div class="col s6">
+                        <div class="input-field col s12">
+                            <select id="region">
+                              <option value="eu">EU</option>
+                              <option value="na">NA</option>
+                            </select>
+                            <label>Region</label>
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <div class="input-field col s12">
+                            <select id="season">
+                                <option value="2017-pre3">Season 3</option>
+                                <option value="2017-pre2">Season 2</option>
+                            </select>
+                            <label>Season</label>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
@@ -73,11 +94,11 @@
             </div>
         </div>
         <div id="stats" style="display: none">
-            <h5>Region EU - Season 3</h5>
             <ul class="collapsible popout" data-collapsible="accordion">
                 <li>
                     <div class="collapsible-header"><i class="material-icons">looks_one</i><b class="blue-text text-light-blue darken-2">SOLO</b></div>
                     <div class="collapsible-body">
+                        <div id="solo"></div>
                         <table class="bordered">
                             <tbody id="solo-fp">
                             </tbody>
@@ -87,6 +108,7 @@
                 <li>
                     <div class="collapsible-header"><i class="material-icons">looks_two</i><b class="blue-text text-light-blue darken-2">DUO</b></div>
                     <div class="collapsible-body">
+                        <div id="duo"></div>
                         <table class="bordered">
                             <tbody id="duo-fp">
                             </tbody>
@@ -96,6 +118,7 @@
                 <li>
                     <div class="collapsible-header"><i class="material-icons">looks_4</i><b class="blue-text text-light-blue darken-2">SQUAD</b></div>
                     <div class="collapsible-body">
+                        <div id="squad"></div>
                         <table class="bordered">
                             <tbody id="squad-fp">
                             </tbody>
@@ -108,6 +131,12 @@
     <script>
         $(document).ready(function() {
             $('.collapsible').collapsible();
+        });
+        $(document).ready(function() {
+            $(".button-collapse").sideNav();
+        });
+        $(document).ready(function() {
+            $('select').material_select();
         });
 
         $('div > input').keyup(function() {
