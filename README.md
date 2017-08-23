@@ -12,6 +12,6 @@ The app works thanks to two essential elements:
 
 ## TO-DO
 
-- Handle exceptions in the backend
 - Stats selection
-- Season and region selection (right now only support for EU - Season 3)
+- Stats calification (positive/negative)
+- Total stats section
