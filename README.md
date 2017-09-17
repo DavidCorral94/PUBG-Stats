@@ -33,3 +33,4 @@ The app works thanks to two essential elements:
 
 - Stats selection
 - Total stats section
+- FPP / TPP difference
