@@ -1,6 +1,6 @@
 # PUBG-Stats
 
-A web tool that makes you able to see your own stats on PUBG and compare it with others!
+A web tool that makes you able to see your own stats on PUBG and also compare it with others! You can filter by Season and Region.
 
 You can have a look in [https://pubg-stats.herokuapp.com/](https://pubg-stats.herokuapp.com/)
 
@@ -29,7 +29,3 @@ The app works thanks to two essential elements:
 
 *Figure 4 - Solo stats comparasion view*
 
-## TO-DO
-
-- Stats selection
-- Total stats section
