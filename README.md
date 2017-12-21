@@ -1,6 +1,6 @@
 # PUBG-Stats
 
-A web tool that makes you able to see your own stats on PUBG and also compare it with others! You can filter by Season and Region.
+A web tool that makes you able to see your own stats on PUBG and also compare it with others! You can filter by Season, Region, and TPP/FPP.
 
 You can have a look in [https://pubg-stats.herokuapp.com/](https://pubg-stats.herokuapp.com/)
 
@@ -10,6 +10,8 @@ The app works thanks to two essential elements:
 
 - [https://pubgtracker.com](https://pubgtracker.com) Source service and info provider.
 - [pubg-api-redis](https://github.com/javilobo8/pubg-api-redis) Playerunknown's Battlegrounds API Wrapper with Redis caching.
+
+If you notice that the app doesn't work, please check the PUBG Stat Servers status [https://pubgtracker.com](https://pubgtracker.com) 
 
 ## Screenshots
 
