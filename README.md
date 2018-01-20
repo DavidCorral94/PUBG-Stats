@@ -1,8 +1,8 @@
 # PUBG-Stats
 
-A web tool that makes you able to see your own stats on PUBG and also compare it with others! You can filter by Season, Region, and TPP/FPP.
+![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `Actually PUBG Tracker is not available so this app can not work properly.`
 
-You can have a look in [https://pubg-stats.herokuapp.com/](https://pubg-stats.herokuapp.com/)
+A web tool that makes you able to see your own stats on PUBG and also compare it with others! You can filter by Season, Region, and TPP/FPP.
 
 ## Technologies
 
